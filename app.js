@@ -11,9 +11,11 @@ mongoose.connect('mongodb://localhost:27017/library');
 // autoIncrement.initialize(mongoose.connection)
 
 let indexRouter = require('./routes/index');
-let userRouter = require('./routes/users');
+let userRouter = require('./routes/userRouter');
 let bookRouter = require('./routes/bookRouter');
 let libraryRouter = require('./routes/libraryRouter')
+let loanRouter = require('./routes/loanRouter')
+let holdRouter = require('./routes/holdRouter')
 
 let app = express();
 
@@ -32,6 +34,8 @@ app.use('/', indexRouter);
 app.use('/user', userRouter);
 app.use('/book', bookRouter);
 app.use('/library',libraryRouter);
+app.use('/loan', loanRouter);
+app.use('/hold', holdRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
